@@ -1,25 +1,41 @@
 <?php 
 
 function userAuthorization() {
-  $userLogin = $_POST['login'];
-  $userPass = $_POST['pass'];
+  $user = [
+    "login" => $_POST['login'],
+    "pass" => $_POST['pass'],
+    "connect" => new mysqli("localhost", "root", "", "users"),
+    "valid" => [
+      "login" => FALSE,
+      "pass" => FALSE,
+    ]
+  ];
 
-  $connect = new mysqli("localhost", "root", "", "users");
+  $sql = "SELECT login, pass FROM `users_list` WHERE login='$user[login]'";
+  $res = $user['connect']->query($sql);
+  $row = $res->fetch_assoc();
 
-  $sql = "SELECT login, pass FROM `users_list` WHERE login='$userLogin'";
-  $resultQueryLogin = $connect->query($sql);
-  print_r($sql);
-  if($row = $resultQueryLogin->fetch_assoc()) {
+  if(isset($row['login']) && $row['login'] === $user['login']) {
+    $user['valid']['login'] = TRUE;
+  } 
 
-    if($row['login'] === $userLogin && $row['pass'] === $userPass) {
-      header("Location: ../templates/afterLogin/afterLogin.html"); 
-      echo "ураа";
-    } else {
-      header("Location: ../templates/formLogin/formLogin.html"); 
-      echo "бля";
-    }
+  if(!isset($row['login'])) {
+    $user['valid']['login'] = FALSE;
+  }
 
-  } else {
+  if(isset($row['pass']) && $row['pass'] === $user['pass']) {
+    $user['valid']['pass'] = TRUE;
+  } 
+
+  if(!isset($row['pass'])) {
+    $user['valid']['pass'] = FALSE;
+  }
+
+  if($user['valid']['login'] && $user['valid']['pass']) {
+    header("Location: ../templates/afterLogin/afterLogin.html"); 
+  }
+
+  if(!$user['valid']['login'] || !$user['valid']['pass']) {
     header("Location: ../templates/formLogin/formLogin.html"); 
   }
 

@@ -1,0 +1,7 @@
+.input-novalid {
+  border-color: red;
+}
+
+.validate__error-login {
+  color: red;
+}

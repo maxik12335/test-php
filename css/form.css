@@ -1,0 +1,39 @@
+.input {
+  display: block;
+  height: 30px;
+  margin-bottom: 20px;
+  padding: 5px 10px;
+}
+
+.form {
+  width: 500px;
+  margin: 0 auto;
+  padding: 40px;
+  border: 1px solid #8b8b8b;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.form__title {
+  margin-bottom: 10px;
+  color: #8b8b8b;
+}
+
+.form__btn {
+  height: 50px;
+  background-color: #cecece;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.form__btn:hover {
+  background-color: #cececeb2;
+}
+
+.reg__label {
+  display: flex;
+  flex-direction: column;
+}
