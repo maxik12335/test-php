@@ -23,6 +23,7 @@ input:active {
 
 input {
   color: #707070ba;
+  border: 2px solid #cecece;
 }
 
 .container {

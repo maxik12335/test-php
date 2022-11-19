@@ -2,6 +2,6 @@
   border-color: red;
 }
 
-.validate__error-login {
-  color: red;
+.error-message {
+  color:#8b8b8b;
 }

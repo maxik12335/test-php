@@ -3,6 +3,7 @@
   height: 30px;
   margin-bottom: 20px;
   padding: 5px 10px;
+  background-color: white;
 }
 
 .form {
@@ -36,4 +37,9 @@
 .reg__label {
   display: flex;
   flex-direction: column;
+}
+
+.error__list {
+  margin-bottom: 20px;
+  text-align: left;
 }
